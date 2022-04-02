@@ -9,7 +9,6 @@ const urlMyApi = "http://localhost:3001";
 export function getAllDogs() {
     return async function (dispatch) {
         var json = await axios.get(`${urlMyApi}/dogs`, {
-
         });
         return dispatch({//necesario para despachar la accion
             type: GET_ALL_DOGS,
@@ -35,13 +34,21 @@ export function FilterByTemperament(payload) {
     }
 };
 
-export function getBreed() {//dogs by name
-    return{
-        type: GET_BREED,
+export function getBreed(payload) {//dogs by name
+    return async function (dispatch) {//Dispatch que podemos usar gracias a la asincronia provista por el middleware thunk
+        try {
+            var json = await axios.get("http://localhost:3001/dogs?name=" + payload)
+            return dispatch ({
+                type: GET_BREED,
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 };
 
-export function getAz() {
+export function getAz() {  //order alphabetically 
     return{
         type: GET_AZ
     }
@@ -53,5 +60,14 @@ export function getZa() {
     }
 };
 
+export function getDescWeight() { //Order by weight
+    return{
+        type: GET_DESC_WEIGHT,
+    }
+};
 
-
+export function getAscWeight() {
+    return{
+        type: GET_ASC_WEIGHT,
+    }
+};

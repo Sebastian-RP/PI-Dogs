@@ -46,17 +46,70 @@ const rootReducer = (state = intialState, action) => {
         ...state,
         dogs: filteredDogs,
       };
-
     case GET_BREED:
-      return {};
+      return{
+        ...state,
+        dogs: action.payload
+      }
     case GET_AZ:
-      return {};
+      const sortedNameAz = allDogs.sort((a, b) => {
+        if (a.name > b.name) {
+          return -1;
+        }
+        if (b.name > a.name) {
+          return 1;
+        }
+        return 0;
+      })
+      return {
+        ...state,
+        dogs: sortedNameAz
+      };
     case GET_ZA:
-      return {};
+      const sortedNameZa = allDogs.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (b.name > a.name) {
+          return -1;
+        }
+        return 0;
+      })
+      return {
+        ...state,
+        dogs: sortedNameZa
+      };
+
     case GET_DESC_WEIGHT:
-      return {};
+      const sortedWeightDesc = state.allDogs.sort((a, b) => {
+        if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
+          return 1;
+        }
+        if (parseInt(b.weight[1]) > parseInt(a.weight[1])) {
+          return -1;
+        }
+        return 0;
+      });
+      return {
+        ...state,
+        dogs: sortedWeightDesc,
+      };
+
     case GET_ASC_WEIGHT:
-      return {};
+      const sortedWeightAsc = state.allDogs.sort((a, b) => {
+        if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
+          return 1;
+        }
+        if (parseInt(b.weight[1]) > parseInt(a.weight[1])) {
+          return -1;
+        }
+        return 0;
+      });
+      return {
+        ...state,
+        dogs: sortedWeightAsc,
+      };
+
     default:
       break;
   }
