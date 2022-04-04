@@ -19,7 +19,7 @@ function Home() {
   const allTemperaments = useSelector(state => state.temperaments);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [dogsPerPage, setDogsPerPage] = useState(8);
+  const dogsPerPage = 8;
   const lastIndex = currentPage * dogsPerPage; //
   const firstIndex = lastIndex - dogsPerPage;
   const currentDogs = allDogs.slice(firstIndex, lastIndex);
