@@ -1,7 +1,7 @@
 import axios from "axios";
 import {    
     GET_ALL_DOGS, GET_TEMPERAMENTS, GET_FILTER_TEMPERAMENTS, 
-    GET_BREED, GET_AZ, GET_ZA, GET_DESC_WEIGHT, GET_ASC_WEIGHT 
+    GET_BREED, ORDER_BY_NAME, ORDER_BY_WEIGHT 
 } from "../types/index";
 
 const urlMyApi = "http://localhost:3001";
@@ -48,26 +48,16 @@ export function getBreed(payload) {//dogs by name
     }
 };
 
-export function getAz() {  //order alphabetically 
-    return{
-        type: GET_AZ
+export function OrderByName(payload) {
+    return { 
+        type: ORDER_BY_NAME,
+        payload
     }
 };
 
-export function getZa() {
-    return{
-        type: GET_ZA
-    }
-};
-
-export function getDescWeight() { //Order by weight
-    return{
-        type: GET_DESC_WEIGHT,
-    }
-};
-
-export function getAscWeight() {
-    return{
-        type: GET_ASC_WEIGHT,
+export function OrderByWeight(payload) {
+    return { 
+        type: ORDER_BY_WEIGHT,
+        payload
     }
 };

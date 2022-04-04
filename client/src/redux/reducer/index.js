@@ -3,10 +3,8 @@ import {
   GET_TEMPERAMENTS,
   GET_FILTER_TEMPERAMENTS,
   GET_BREED,
-  GET_AZ,
-  GET_ZA,
-  GET_DESC_WEIGHT,
-  GET_ASC_WEIGHT,
+  ORDER_BY_NAME,
+  ORDER_BY_WEIGHT,
 } from "../types/index";
 
 const intialState = {
@@ -51,67 +49,57 @@ const rootReducer = (state = intialState, action) => {
         ...state,
         dogs: action.payload
       }
-    case GET_AZ:
-      const sortedNameAz = allDogs.sort((a, b) => {
-        if (a.name > b.name) {
-          return -1;
+      case ORDER_BY_NAME:
+        const sortedName = action.payload === "A-Z" ? 
+            state.allDogs.sort((a, b) => {
+                if (a.name > b.name) {
+                    return 1;
+                }
+                if (b.name > a.name) {
+                    return -1;
+                }
+                return 0;
+            }) :
+            state.allDogs.sort((a, b) => {
+                if (a.name > b.name) {
+                    return -1;
+                }
+                if (b.name > a.name) {
+                    return 1;
+                }
+                return 0;
+            })
+        return {
+            ...state,
+            dogs: sortedName
         }
-        if (b.name > a.name) {
-          return 1;
-        }
-        return 0;
-      })
-      return {
-        ...state,
-        dogs: sortedNameAz
-      };
-    case GET_ZA:
-      const sortedNameZa = allDogs.sort((a, b) => {
-        if (a.name > b.name) {
-          return 1;
-        }
-        if (b.name > a.name) {
-          return -1;
-        }
-        return 0;
-      })
-      return {
-        ...state,
-        dogs: sortedNameZa
-      };
 
-    case GET_DESC_WEIGHT:
-      const sortedWeightDesc = state.allDogs.sort((a, b) => {
-        if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
-          return 1;
-        }
-        if (parseInt(b.weight[1]) > parseInt(a.weight[1])) {
-          return -1;
-        }
-        return 0;
-      });
-      return {
-        ...state,
-        dogs: sortedWeightDesc,
-      };
+        case ORDER_BY_WEIGHT:
+          const sortedWeight = action.payload === "min_weight" ? 
+              state.allDogs.sort((a, b) => {
+                  if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
+                      return 1;
+                  }
+                  if (parseInt(b.weight[1]) > parseInt(a.weight[1])) {
+                      return -1;
+                  }
+                  return 0;
+              }) :
+              state.allDogs.sort((a, b) => {
+                  if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
+                      return -1;
+                  }
+                  if (parseInt(b.weight[1]) > parseInt(a.weight[1])) {
+                      return 1;
+                  }
+                  return 0;
+              })
+          return {
+              ...state,
+              dogs: sortedWeight
+          }
 
-    case GET_ASC_WEIGHT:
-      const sortedWeightAsc = state.allDogs.sort((a, b) => {
-        if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
-          return 1;
-        }
-        if (parseInt(b.weight[1]) > parseInt(a.weight[1])) {
-          return -1;
-        }
-        return 0;
-      });
-      return {
-        ...state,
-        dogs: sortedWeightAsc,
-      };
-
-    default:
-      break;
+    default: return state;
   }
 };
 

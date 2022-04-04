@@ -1,11 +1,15 @@
+// eslint-disable-next-line
 const GET_ALL_DOGS = "GET_ALL_DOGS";
+// eslint-disable-next-line
 const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
+// eslint-disable-next-line
 const GET_FILTER_TEMPERAMENTS = "GET_FILTER_TEMPERAMENTS";
+// eslint-disable-next-line
 const GET_BREED = "GET_BREED";
-const GET_AZ = "GET_AZ ";
-const GET_ZA = "GET_ZA";
-const GET_DESC_WEIGHT = "GET_DESC-WEIGHT ";
-const GET_ASC_WEIGHT = "GET_ASC_WEIGHT";
+// eslint-disable-next-line
+const ORDER_BY_NAME = "ORDER_BY_NAME";
+// eslint-disable-next-line
+const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 
 
 // -	Traer todos los perros y mostrarlos = GET_ALL_DOGS
