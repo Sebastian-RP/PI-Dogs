@@ -11,6 +11,7 @@ import {
 } from "../../redux/actions";
 import Card from "../Card/Card";
 import Paginate from "../Paginate/Paginate";
+import SearchBar from "../SearchBar/SearchBar"
 // import style from "../Home/Home.modules.css";
 
 function Home() {
@@ -78,14 +79,16 @@ function Home() {
       <select onChange={handleFilterByTemperament}>
             <option disabled defaultValue>Temperaments</option>
             <option value="Todos">All</option>
-            {allTemperaments.map(temp => (
+            {allTemperaments?.map(temp => (
                 <option value={temp.name}  key={temp.id}>{temp.name}</option>
             ))}
       </select>
 
+      <SearchBar />
       <div>botones</div>
+      
+
       <div className="container-cards">
-        
         <div>
           {currentDogs?.map((el) => {//validacion que existan los datos
             return(

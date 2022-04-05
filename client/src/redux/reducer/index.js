@@ -23,9 +23,10 @@ const rootReducer = (state = intialState, action) => {
         allDogs: action.payload,
       };
     case "GET_TEMPERAMENTS":
+      const  filteresTemp = action.payload.filter(temp => temp.name !== "");//eliminar razas con strings vacios
       return {
         ...state,
-        temperaments: action.payload,
+        temperaments: filteresTemp,
       };
       
     case "GET_FILTER_TEMPERAMENTS":
