@@ -20,25 +20,28 @@ function Home() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const dogsPerPage = 8;
-  const lastIndex = currentPage * dogsPerPage; //
+  const lastIndex = currentPage * dogsPerPage; 
   const firstIndex = lastIndex - dogsPerPage;
-  const currentDogs = allDogs.slice(firstIndex, lastIndex);
+  const currentDogs = allDogs.slice(firstIndex, lastIndex);//elementos a renderizar en la pagina, segun el valor de paginado
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
   };
 
-
-  const [orden, setOrden] = useState("")
+  // eslint-disable-next-line
+  const [orden, setOrden] = useState("");
 
   useEffect(() => {
     //acciones a depachar luego de montar el componente
     dispatch(getAllDogs());
     dispatch(getTemperaments());
-  }, [dispatch]); //renderizar tras cada dispatch
+  }, [dispatch]);
+
+  console.log(allDogs);//llegando todos los perros****************
 
   const handleFilterByTemperament = (e) => {
     e.preventDefault();    
+    console.log(e.target.value);//valor elegido correctamente
     dispatch(FilterByTemperament(e.target.value));
   };
 
@@ -57,7 +60,7 @@ function Home() {
   return (
     <>
       <select onChange={handleOrderByName}>
-        <option disabled selected>
+        <option disabled defaultValue>
           Alphabetical order
         </option>
         <option value="A-Z">A-Z</option>
@@ -65,7 +68,7 @@ function Home() {
       </select>
 
       <select onChange={handleOrderByWeight}>
-        <option disabled selected>
+        <option disabled defaultValue>
           Filter by weight
         </option>
         <option value="max_weight">Max</option>
@@ -73,12 +76,12 @@ function Home() {
       </select>
 
       <select onChange={handleFilterByTemperament}>
-            <option disabled selected>Temperaments</option>
+            <option disabled defaultValue>Temperaments</option>
             <option value="Todos">All</option>
             {allTemperaments.map(temp => (
-                <option value={temp.name}>{temp.name}</option>
+                <option value={temp.name}  key={temp.id}>{temp.name}</option>
             ))}
-        </select>
+      </select>
 
       <div>botones</div>
       <div className="container-cards">
@@ -86,8 +89,8 @@ function Home() {
         <div>
           {currentDogs?.map((el) => {//validacion que existan los datos
             return(
-              <Link to={"/home/"+el.id}>
-                <Card image={el.image} name={el.name} temperament={el.temperament}/>
+              <Link to={"/home/"+el.id} key={el.id}>
+                <Card image={el.image} name={el.name} temperament={el.temperament} key={el.id}/>
               </Link>
             )
           })}
@@ -95,7 +98,7 @@ function Home() {
 
       </div>
 
-      <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado}/>
+      <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado}/> {/*el valor de la funcion de paginado aumenta segun el bucle for en el componente Paginate*/}
     </>
   );
 }

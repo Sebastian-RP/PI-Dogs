@@ -1,11 +1,11 @@
-import {
-  GET_ALL_DOGS,
-  GET_TEMPERAMENTS,
-  GET_FILTER_TEMPERAMENTS,
-  GET_BREED,
-  ORDER_BY_NAME,
-  ORDER_BY_WEIGHT,
-} from "../types/index";
+// import {
+//   GET_ALL_DOGS,
+//   GET_TEMPERAMENTS,
+//   GET_FILTER_TEMPERAMENTS,
+//   GET_BREED,
+//   ORDER_BY_NAME,
+//   ORDER_BY_WEIGHT,
+// } from "../types/index";
 
 const intialState = {
   dogs: [],
@@ -27,6 +27,7 @@ const rootReducer = (state = intialState, action) => {
         ...state,
         temperaments: action.payload,
       };
+      
     case "GET_FILTER_TEMPERAMENTS":
       const allDogs = state.allDogs;
       let filteredDogs = [];
@@ -34,13 +35,14 @@ const rootReducer = (state = intialState, action) => {
         filteredDogs = allDogs;
       } else {
         for (let i = 0; i < allDogs.length; i++) {
-          let found = allDogs[i].temperaments.find(
-            (t) => t.name === action.payload
+          let found = allDogs[i].temperament.find(
+            (t) => t === action.payload
           );
-          if (found) filteredDogs.push(allDogs[i]);
+          if (found) 
+          { filteredDogs.push(allDogs[i])}//todos los perros en la posicion de ese momento
         }
       }
-      return {
+      return { //return funciona correcto
         ...state,
         dogs: filteredDogs,
       };

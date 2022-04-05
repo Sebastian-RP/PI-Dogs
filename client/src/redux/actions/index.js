@@ -1,9 +1,4 @@
 import axios from "axios";
-import {
-    GET_ALL_DOGS, GET_TEMPERAMENTS, GET_FILTER_TEMPERAMENTS, 
-    GET_BREED, ORDER_BY_NAME, ORDER_BY_WEIGHT 
-} from "../types/index";
-
 const urlMyApi = "http://localhost:3001";
 
 export function getAllDogs() {
