@@ -11,7 +11,7 @@ const intialState = {
   dogs: [],
   temperaments: [],
   allDogs: [],
-  detail: [],
+  details: [],
 };
 
 const rootReducer = (state = intialState, action) => {
@@ -23,12 +23,12 @@ const rootReducer = (state = intialState, action) => {
         allDogs: action.payload,
       };
     case "GET_TEMPERAMENTS":
-      const  filteresTemp = action.payload.filter(temp => temp.name !== "");//eliminar razas con strings vacios
+      const filteresTemp = action.payload.filter((temp) => temp.name !== ""); //eliminar razas con strings vacios
       return {
         ...state,
         temperaments: filteresTemp,
       };
-      
+
     case "GET_FILTER_TEMPERAMENTS":
       const allDogs = state.allDogs;
       let filteredDogs = [];
@@ -36,14 +36,14 @@ const rootReducer = (state = intialState, action) => {
         filteredDogs = allDogs;
       } else {
         for (let i = 0; i < allDogs.length; i++) {
-          let found = allDogs[i].temperament.find(
-            (t) => t === action.payload
-          );
-          if (found) 
-          { filteredDogs.push(allDogs[i])}//todos los perros en la posicion de ese momento
+          let found = allDogs[i].temperament.find((t) => t === action.payload);
+          if (found) {
+            filteredDogs.push(allDogs[i]);
+          } //todos los perros en la posicion de ese momento
         }
       }
-      return { //return funciona correcto
+      return {
+        //return funciona correcto
         ...state,
         dogs: filteredDogs,
       };
@@ -103,9 +103,13 @@ const rootReducer = (state = intialState, action) => {
         ...state,
         dogs: sortedWeight,
       };
+    case "SHOW_DOG_DETAILS":
+      return {
+        ...state,
+        details: action.payload
+      };
     default:
       return state;
-    // default: return {dogs: ["hola2", "hola3", "hola4"]}
   }
 };
 

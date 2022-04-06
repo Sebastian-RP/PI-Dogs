@@ -38,8 +38,6 @@ function Home() {
     dispatch(getTemperaments());
   }, [dispatch]);
 
-  console.log(allDogs);//llegando todos los perros****************
-
   const handleFilterByTemperament = (e) => {
     e.preventDefault();    
     console.log(e.target.value);//valor elegido correctamente
@@ -92,7 +90,7 @@ function Home() {
         <div>
           {currentDogs?.map((el) => {//validacion que existan los datos
             return(
-              <Link to={"/home/"+el.id} key={el.id}>
+              <Link to={"/dog-detail/"+el.id} key={el.id}>
                 <Card image={el.image} name={el.name} temperament={el.temperament} key={el.id}/>
               </Link>
             )
