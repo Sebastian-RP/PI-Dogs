@@ -36,7 +36,7 @@ const getApiData = async() => {
             name: el.name,
             height: heightArray,
             weight: weightArray,
-            temperament: temperamentArray,
+            temperaments: temperamentArray,
             life_span: el.life_span,
             image: el.image.url,
         }
@@ -139,9 +139,11 @@ router.post("/dog", async (req, res) => {
         where: { name: temperaments},
     })
  
-    dog.addTemperament(associatedTemp)
+    dog.addTemperament(associatedTemp);
  
     res.status(200).send("Dog created succesfully!")
- })
+})
+
+router.use(express.json());
 
 module.exports = router;

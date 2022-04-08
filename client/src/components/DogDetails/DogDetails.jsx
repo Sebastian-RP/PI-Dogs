@@ -18,11 +18,12 @@ export default function DogDetails() {
     if (details[0]) { //una vez ya se hayan traido los datos renderizalos
         nameDog = details[0].name;
         imageDog = details[0].image;
-        temperamentDog = [...details[0].temperament]
         heightDog = details[0].height;
         weightDog = details[0].weight;
         lifeSpanDog = details[0].life_span;
-        console.log(lifeSpanDog);
+        
+        temperamentDog = [...details[0].temperaments]
+        console.log(details);
     }
 
     return(

@@ -56,6 +56,7 @@ function Home() {
     setOrden(`Ordenado ${e.target.value}`);
   };
 
+
   return (
     <>
       <select onChange={handleOrderByName}>
@@ -91,13 +92,14 @@ function Home() {
           {currentDogs?.map((el) => {//validacion que existan los datos
             return(
               <Link to={"/dog-detail/"+el.id} key={el.id}>
-                <Card image={el.image} name={el.name} temperament={el.temperament} key={el.id}/>
+                <Card image={el.image} name={el.name} temperaments={el.temperaments} key={el.id}/>
               </Link>
             )
           })}
         </div>
 
       </div>
+      {console.log(currentDogs)}
 
       <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado}/> {/*el valor de la funcion de paginado aumenta segun el bucle for en el componente Paginate*/}
     </>
