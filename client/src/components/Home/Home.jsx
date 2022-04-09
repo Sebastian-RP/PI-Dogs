@@ -56,6 +56,7 @@ function Home() {
     setOrden(`Ordenado ${e.target.value}`);
   };
 
+  
 
   return (
     <>
@@ -92,7 +93,7 @@ function Home() {
           {currentDogs?.map((el) => {//validacion que existan los datos
             return(
               <Link to={"/dog-detail/"+el.id} key={el.id}>
-                <Card image={el.image} name={el.name} temperaments={el.temperaments} key={el.id}/>
+                <Card key={el.id} image={el.image} name={el.name} temperaments={el.temperaments[0].name ? el.temperaments.map(el => el.name) : el.temperaments}/>
               </Link>
             )
           })}

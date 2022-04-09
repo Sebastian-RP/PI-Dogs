@@ -36,7 +36,7 @@ const rootReducer = (state = intialState, action) => {
         filteredDogs = allDogs;
       } else {
         for (let i = 0; i < allDogs.length; i++) {
-          let found = allDogs[i].temperament.find((t) => t === action.payload);
+          let found = allDogs[i].temperaments.find((t) => t === action.payload);
           if (found) {
             filteredDogs.push(allDogs[i]);
           } //todos los perros en la posicion de ese momento
