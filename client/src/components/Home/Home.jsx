@@ -77,15 +77,20 @@ function Home() {
       </select>
 
       <select onChange={handleFilterByTemperament}>
-            <option disabled defaultValue>Temperaments</option>
-            <option value="Todos">All</option>
-            {allTemperaments?.map(temp => (
+          <option disabled defaultValue>Temperaments</option>
+          <option value="Todos">All</option>
+          {
+            allTemperaments?.map(temp => (
                 <option value={temp.name}  key={temp.id}>{temp.name}</option>
-            ))}
+            ))
+          }
       </select>
 
       <SearchBar />
-      <div>botones</div>
+      
+      <div className="">
+        <Link to="/dog">CREATE DOG</Link>
+      </div>
       
 
       <div className="container-cards">

@@ -98,37 +98,36 @@ export default function FormAddDog() {
         <h4>agregando perros </h4>
         <form action="" id="form" onSubmit={handleSubmit}>
             <div className="">
-                <input type="text" value={form.name} name="name" placeholder="Name..."/>
+                <input type="text" value={form.name} name="name" onChange={(e) => handleChange(e)} placeholder="Name..."/>
             </div>
-            {/* espacio para agregar error */}
+            <div className={""}>{errors.name && <p>{errors.name}</p>}</div> {/*mesaje ed error de nombre*/}
 
             <div className="height-container">
                 <div className="min-height-container">
                     <input type="text" value={form.min_height} name="min_height" placeholder="Min height..." onChange={(e) => handleChange(e)}/>
                 </div>
-                {/* espacio para agregar error */}
+                
                 <div className="min-height-container">
                     <input type="text" value={form.max_height} name="max_height" placeholder="Max height..." onChange={(e) => handleChange(e)}/>
                 </div>
-                {/* espacio para agregar error */}
+                <div className={""}>{errors.height && <p>{errors.height}</p>}</div>{/* espacio para agregar error */}{/* espacio para agregar error */}
             </div>
 
             <div className="weight-container">
                 <div className="min-weight-container">
                     <input type="text" value={form.min_weight} name="min_weight" placeholder="Min weight..." onChange={(e) => handleChange(e)}/>
                 </div>
-                {/* espacio para agregar error */}
 
                 <div className="max-weight-container">
                     <input type="text" value={form.max_weight} name="max_weight" placeholder="Max weight..." onChange={(e) => handleChange(e)}/>
                 </div>
-                {/* espacio para agregar error */}
+                <div className={""}>{errors.weight && <p>{errors.weight}</p>}</div>{/* espacio para agregar error */}
             </div>
 
             <div className="life-span-container">
                 <input type="text" autoComplete="off" name="life_span" value={form.life_span} placeholder="lifespan exam: 10 - 12" onChange={(e) => handleChange(e)}/>
             </div>
-            {/* espacio para agregar error */}
+            <div className={""}>{errors.life_span && <p>{errors.life_span}</p>}</div>{/* espacio para agregar error */}
 
             <div className="image-container">
                 <input type="text" autoComplete="off" value={form.image} name="image" placeholder="Image URL..." onChange={(e) => handleChange(e)}/>
