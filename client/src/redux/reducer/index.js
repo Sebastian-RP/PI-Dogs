@@ -24,6 +24,7 @@ const rootReducer = (state = intialState, action) => {
       };
     case "GET_TEMPERAMENTS":
       const filteresTemp = action.payload.filter((temp) => temp.name !== ""); //eliminar razas con strings vacios
+      //eliminar elementos repetidos
       return {
         ...state,
         temperaments: filteresTemp,

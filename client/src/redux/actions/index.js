@@ -71,3 +71,12 @@ export function showDogDetails(id) {
         }
     }
 };
+
+export function postDog(payload) {
+    return async function () {
+        const data = await axios.post("http://localhost:3001/dog", payload);
+
+        console.log(data);
+        return data;
+    }
+}

@@ -29,7 +29,6 @@ export default function DogDetails() {
         if (details[0].temperaments[0].name) {//debido al formato con el que se devuelven los perros creados
             temperamentDog = details[0].temperaments.map(temp => temp.name)
         }
-        console.log(details[0]);
     }
 
     return(
