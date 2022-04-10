@@ -133,13 +133,13 @@ __Ruta de creación de raza de perro__: debe contener
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Raza con las siguientes propiedades:
+  - [ ] Raza con las siguientes propiedades:
   - ID *
   - Nombre *
   - Altura *
   - Peso *
   - Años de vida
-- [ ] Temperamento con las siguientes propiedades:
+  - [ ] Temperamento con las siguientes propiedades:
   - ID
   - Nombre
 
@@ -174,5 +174,6 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 - [ ] Al menos tener un componente del frontend con sus tests respectivos
 - [ ] Al menos tener una ruta del backend con sus tests respectivos
 - [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
-#   P I - D o g s  
+#   P I - D o g s 
+ 
  

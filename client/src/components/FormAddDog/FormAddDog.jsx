@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getTemperaments, postDog } from "../../redux/actions";
 
 const validate = (form) => {
@@ -27,7 +27,6 @@ export default function FormAddDog() {
     const temperaments = useSelector((state) => state.temperaments);
 
     const [button, setButton] = useState(true);
-    // const navigate = useNavigate();
     const [errors, setErrors] = useState({});
 
     const [form, setForm] = useState({
@@ -64,7 +63,6 @@ export default function FormAddDog() {
             image: "",
             temperaments: []
         });
-        // navigate("/home")
     }
 
     const handleChange = (e) => {
@@ -94,6 +92,7 @@ export default function FormAddDog() {
 
     return(
         <>
+        <Link to="/home">{`<= Home`}</Link>
         <h3>Botton de go to home</h3>
         <h4>agregando perros </h4>
         <form action="" id="form" onSubmit={handleSubmit}>
