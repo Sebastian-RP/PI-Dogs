@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getBreed } from "../../redux/actions/"
+import { getBreed } from "../../redux/actions/";
+import style from "../SearchBar/SearchBar.module.css";
 
 export default function SearchBar() {
     const dispatch = useDispatch();
@@ -17,9 +18,11 @@ export default function SearchBar() {
     }
 
     return(
-        <>
-        <input type="text" onChange={handleInput}/>
-        <button type="submit" onClick={handleSubmit}>Search</button>
-        </>
+        <div className={style.searchbar_container}>
+            <input className={`${style.searchbar}`} type="text" onChange={handleInput} placeholder="Search..."/>
+            <button className={`${style.searchbar_button}`} type="submit" onClick={handleSubmit}>
+                <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
     )
 }

@@ -67,40 +67,55 @@ function Home() {
     <>
       <header className={`${style.header}`}>
         <div className={`${style.header_container_left}`}>
-          <SearchBar />
+
+          <Link to="/">
+            <div className={`${style.logo}`}>Dogpedia</div> {/* logo del home */}
+          </Link>
+          
           <div className={`${style.header_left}`}>
-            <select onChange={handleOrderByName}>
-              <option disabled selected defaultValue>
-                Alphabetical order
-              </option>
-              <option value="A-Z">A-Z</option>
-              <option value="Z-A">Z-A</option>
-            </select>
 
-            <select onChange={handleOrderByWeight}>
-              <option disabled selected defaultValue>
-                Filter by weight
-              </option>
-              <option value="max_weight">Max</option>
-              <option value="min_weight">Min</option>
-            </select>
+            <SearchBar />
 
-            <select onChange={handleFilterByTemperament}>
-                <option disabled selected defaultValue>Temperaments</option>
-                <option value="Todos">All</option>
-                {
-                  allTemperaments?.map(temp => (
-                      <option value={temp.name}  key={temp.id}>{temp.name}</option>
-                  ))
-                }
-            </select>
+            <div className={`${style.container_filters}`}>
+              <select onChange={handleOrderByName}>
+                <option disabled selected defaultValue>
+                  Alphabetical order
+                </option>
+                <option value="A-Z">A-Z</option>
+                <option value="Z-A">Z-A</option>
+              </select>
+
+              <select onChange={handleOrderByWeight}>
+                <option disabled selected defaultValue>
+                  Filter by weight
+                </option>
+                <option value="max_weight">Max</option>
+                <option value="min_weight">Min</option>
+              </select>
+
+              <select onChange={handleFilterByTemperament}>
+                  <option disabled selected defaultValue>Temperaments</option>
+                  <option value="Todos">All</option>
+                  {
+                    allTemperaments?.map(temp => (
+                        <option value={temp.name}  key={temp.id}>{temp.name}</option>
+                    ))
+                  }
+              </select>
+
+            </div>
+            
           </div>
         </div>
         {/* boton para agregar nuevos perros */}
         <div className={`${style.header_right}`}>
-          <Link to="/dog">CREATE DOG</Link>
+          <Link to="/dog">
+            <button className={`${style.button_add_dog}`}>CREATE DOG</button>
+          </Link>
         </div>
       </header>
+
+      <hr />
 
     <div className={style.main_container}>
       <div className={style.container_cards}>
