@@ -1,4 +1,5 @@
 import React from "react";
+import style from "../Paginate/Paginate.module.css"
 
 export default function Paginate({ dogsPerPage, allDogs, paginado }) {
     const pageNumbers =[];
@@ -8,10 +9,10 @@ export default function Paginate({ dogsPerPage, allDogs, paginado }) {
     }
 
     return(
-        <nav>
-            <ul>
+        <nav className={`${style.nav_container}`}>
+            <ul className={`${style.ul_container}`}>
                 { pageNumbers && pageNumbers.map(number => (
-                    <li onClick={() => paginado(number)} key={number}>
+                    <li className={`${style.li_container}`} onClick={() => paginado(number)} key={number}>
                          <button type="button">{number}</button> 
                     </li>
                 ))}

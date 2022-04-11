@@ -70,7 +70,7 @@ function Home() {
           <SearchBar />
           <div className={`${style.header_left}`}>
             <select onChange={handleOrderByName}>
-              <option disabled defaultValue>
+              <option disabled selected defaultValue>
                 Alphabetical order
               </option>
               <option value="A-Z">A-Z</option>
@@ -78,7 +78,7 @@ function Home() {
             </select>
 
             <select onChange={handleOrderByWeight}>
-              <option disabled defaultValue>
+              <option disabled selected defaultValue>
                 Filter by weight
               </option>
               <option value="max_weight">Max</option>
@@ -86,7 +86,7 @@ function Home() {
             </select>
 
             <select onChange={handleFilterByTemperament}>
-                <option disabled defaultValue>Temperaments</option>
+                <option disabled selected defaultValue>Temperaments</option>
                 <option value="Todos">All</option>
                 {
                   allTemperaments?.map(temp => (
@@ -96,13 +96,13 @@ function Home() {
             </select>
           </div>
         </div>
-        
+        {/* boton para agregar nuevos perros */}
         <div className={`${style.header_right}`}>
           <Link to="/dog">CREATE DOG</Link>
         </div>
       </header>
+
     <div className={style.main_container}>
-      
       <div className={style.container_cards}>
         {currentDogs?.map((el) => {//validacion que existan los datos
           return(
@@ -118,9 +118,10 @@ function Home() {
             </div>      
           )
         })}
-        </div>
-
-      <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado}/> {/*el valor de la funcion de paginado aumenta segun el bucle for en el componente Paginate*/}
+      </div>
+      <div className={`${style.pagination}`}>
+        <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado}/> {/*el valor de la funcion de paginado aumenta segun el bucle for en el componente Paginate*/}
+      </div>
     </div>
     </>
   );
