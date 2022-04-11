@@ -1,0 +1,25 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    background-color: grey;
+}
+
+.header_container_left{
+    margin: 0 5%;
+}
+
+.main_container{
+    background-color: grey;
+    margin: 0 5%;
+}
+
+.container_cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.container_card{ /* estilos de carta individual */
+    background-color: salmon;
+    text-decoration: none;
+}
