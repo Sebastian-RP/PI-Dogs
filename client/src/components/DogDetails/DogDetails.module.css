@@ -12,6 +12,8 @@
     width: 105%;
     border: 0.5rem solid #25b687;
     border-radius: 15px;
+
+    box-shadow: 14px 15px 3px -4px rgba(0,0,0,0.75);
 }
 
 .container_elements{

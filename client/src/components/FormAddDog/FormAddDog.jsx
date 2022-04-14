@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getTemperaments, postDog } from "../../redux/actions";
 
+import style from "../FormAddDog/FormAddDog.module.css";
+
 const validate = (form) => {
     let errors = {}
     if(!form.name) {
@@ -27,7 +29,15 @@ export default function FormAddDog() {
     const temperaments = useSelector((state) => state.temperaments);
 
     const [button, setButton] = useState(true);
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({
+        name: "",
+        min_height: "",
+        max_height: "",
+        min_weight: "",
+        max_weight: "",
+        life_span:  "",
+        image: "",
+    });
 
     const [form, setForm] = useState({
         name: "",
@@ -91,82 +101,80 @@ export default function FormAddDog() {
     }
 
     return(
-        <>
-        <Link to="/home">{`<= Home`}</Link>
-        <h3>Botton de go to home</h3>
-        <h4>agregando perros </h4>
-        <form action="" id="form" onSubmit={handleSubmit}>
-            <div className="">
-                <input type="text" value={form.name} name="name" onChange={(e) => handleChange(e)} placeholder="Name..."/>
-            </div>
-            <div className={""}>{errors.name && <p>{errors.name}</p>}</div> {/*mesaje ed error de nombre*/}
-
-            <div className="height-container">
-                <div className="min-height-container">
-                    <input type="text" value={form.min_height} name="min_height" placeholder="Min height..." onChange={(e) => handleChange(e)}/>
-                </div>
-                
-                <div className="min-height-container">
-                    <input type="text" value={form.max_height} name="max_height" placeholder="Max height..." onChange={(e) => handleChange(e)}/>
-                </div>
-                <div className={""}>{errors.height && <p>{errors.height}</p>}</div>{/* espacio para agregar error */}{/* espacio para agregar error */}
-            </div>
-
-            <div className="weight-container">
-                <div className="min-weight-container">
-                    <input type="text" value={form.min_weight} name="min_weight" placeholder="Min weight..." onChange={(e) => handleChange(e)}/>
-                </div>
-
-                <div className="max-weight-container">
-                    <input type="text" value={form.max_weight} name="max_weight" placeholder="Max weight..." onChange={(e) => handleChange(e)}/>
-                </div>
-                <div className={""}>{errors.weight && <p>{errors.weight}</p>}</div>{/* espacio para agregar error */}
-            </div>
-
-            <div className="life-span-container">
-                <input type="text" autoComplete="off" name="life_span" value={form.life_span} placeholder="lifespan exam: 10 - 12" onChange={(e) => handleChange(e)}/>
-            </div>
-            <div className={""}>{errors.life_span && <p>{errors.life_span}</p>}</div>{/* espacio para agregar error */}
-
-            <div className="image-container">
-                <input type="text" autoComplete="off" value={form.image} name="image" placeholder="Image URL..." onChange={(e) => handleChange(e)}/>
-            </div>
-
-            <div className={""}>
-                <h2>Select Temperaments</h2>
-            </div>
-
-            <div className={""}>
-                    <select className={""} onChange={handleSelect}>
-                        <option disabled selected>Temperaments</option>
-                        {temperaments.map(d => (
-                    
-                        <option value={d.name} key={d.name+Math.random()}>{d.name}</option> //key de elementos de temperamentos, eliminar el repetido reserved
-                        ))}
-                    </select>
-                </div>
-        </form>
-
-        <div className={""}>
-            <button className={""} disabled={button} type="submit" form="form">Create Dog</button>
-        </div>
-
-        <div className="">
-            <div className="">
-                <h1>temperaments</h1>
-            </div>
-
-            <div className="">
-                {form.temperaments.map(el => 
-                <div className="" key={el}>
-                    <p onClick={() => handleDelete(el)}>{el}</p>
-                    <div className="">
-                        <button className="" onClick={() => handleDelete(el)}>Delete X</button>
+        <div className={style.main_wrapper}>
+            <div className={style.container}>
+                <Link to="/home">{`<= Home`}</Link>
+                <form action="" id="form" onSubmit={handleSubmit} className={`${style.form}`}>
+                    <div className={style.name_container}>
+                        <input className={style.input_name} type="text" value={form.name} name="name" onChange={(e) => handleChange(e)} placeholder="Name..."/>
                     </div>
-                </div>    
-                )}
+                    <div className={style.error_form}>{errors.name && <p>{errors.name}</p>}</div> {/*mesaje ed error de nombre*/}
+
+                    <div className={style.height_container}>
+                        <div className={style.min_height}>
+                            <input type="text" value={form.min_height} name="min_height" placeholder="Min height..." onChange={(e) => handleChange(e)}/>
+                        </div>
+                        
+                        <div className={style.max_height}>
+                            <input type="text" value={form.max_height} name="max_height" placeholder="Max height..." onChange={(e) => handleChange(e)}/>
+                        </div>
+                    </div>
+                    <div className={style.error_form}>{errors.height && <p>{errors.height}</p>}</div>{/* espacio para agregar error */}{/* espacio para agregar error */}
+
+                    <div className={style.weight_container}>
+                        <div className={style.min_weight}>
+                            <input type="text" value={form.min_weight} name="min_weight" placeholder="Min weight..." onChange={(e) => handleChange(e)}/>
+                        </div>
+
+                        <div className={style.max_weight}>
+                            <input type="text" value={form.max_weight} name="max_weight" placeholder="Max weight..." onChange={(e) => handleChange(e)}/>
+                        </div>
+                    </div>
+                    <div className={style.error_form}>{errors.weight && <p>{errors.weight}</p>}</div>{/* espacio para agregar error */}
+
+                    <div className="life-span-container">
+                        <input type="text" autoComplete="off" name="life_span" value={form.life_span} placeholder="lifespan exam: 10 - 12" onChange={(e) => handleChange(e)}/>
+                    </div>
+                    <div className={style.error_form}>{errors.life_span && <p>{errors.life_span}</p>}</div>{/* espacio para agregar error */}
+
+                    <div className="image-container">
+                        <input type="text" autoComplete="off" value={form.image} name="image" placeholder="Image URL..." onChange={(e) => handleChange(e)}/>
+                    </div>
+
+                    <div className={""}>
+                        <h3>Select Temperaments</h3>
+                    </div>
+
+                    <div className={""}>
+                        <select className={style.select_temperaments} onChange={handleSelect}>
+                            <option disabled selected>Temperaments</option>
+                            {temperaments.map(d => (                    
+                                <option value={d.name} key={d.name+Math.random()} className={style.option_temperament}>{d.name}</option> //key de elementos de temperamentos, eliminar el repetido reserved
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className={style.container_button_add_dog}>
+                        <button className={style.button_add_dog} disabled={button} type="submit" form="form">Create Dog</button>
+                    </div>
+                </form>
+
+            
+
+                <div className="">
+                    <div className="">
+                        <h2>Temperaments</h2>
+                    </div>
+
+                    <div className={style.container_temperaments}>
+                        {form.temperaments.map(el => 
+                        <div className={style.element_temperament} key={el} onClick={() => handleDelete(el)}>
+                            <p>{`${el}`}</p>
+                        </div>    
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
-        </>
     )
 }
