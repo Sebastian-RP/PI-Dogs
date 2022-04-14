@@ -41,7 +41,6 @@ function Home() {
 
   const handleFilterByTemperament = (e) => {
     e.preventDefault();    
-    console.log(e.target.value);//valor elegido correctamente
     dispatch(FilterByTemperament(e.target.value));
   };
 
@@ -57,12 +56,6 @@ function Home() {
     setOrden(`Ordenado ${e.target.value}`);
   };
 
-  console.log("inicio")
-  console.log(currentDogs)
-  console.log("inicio-cierre");
-
-  // ***************** renderizado ***********
-  // ***************** renderizado ***********
   return (
     <>
       <header className={`${style.header}`}>
@@ -121,12 +114,10 @@ function Home() {
       <div className={style.container_cards}>
         {currentDogs?.map((el) => {//validacion que existan los datos
           return(
-            <div className={`${style.container_card}`}>
-              <Link to={"/dog-detail/"+el.id} key={el.id}>
+            <div className={`${style.container_card}`} key={el.id}>
+              <Link to={"/dog-detail/"+el.id}>
               {
-                !el.temperaments[0] //en caso de no tener temperamentos establecidos
-                ? el.temperaments[0] = "no-temperaments"
-                : <Card key={el.id} image={el.image} name={el.name} temperaments={el.temperaments[0].name ? el.temperaments.map(el => el.name) : el.temperaments}/>
+                <Card key={el.id} image={el.image} name={el.name} temperaments={el.temperaments[0].name ? el.temperaments.map(el => el.name) : el.temperaments}/>
                 //si temperaments viene en un formato distinto desde la BD
               }
             </Link>

@@ -17,6 +17,11 @@ const intialState = {
 const rootReducer = (state = intialState, action) => {
   switch (action.type) {
     case "GET_ALL_DOGS":
+      action.payload.forEach(element => {
+        if (!element.temperaments[0]) {
+          element.temperaments[0] = "no-temperaments" //eliminamos arreglos vacios de temperamentos
+        }
+      });
       return {
         ...state,
         dogs: action.payload,
@@ -24,7 +29,6 @@ const rootReducer = (state = intialState, action) => {
       };
     case "GET_TEMPERAMENTS":
       const filteresTemp = action.payload.filter((temp) => temp.name !== ""); //eliminar razas con strings vacios
-      //eliminar elementos repetidos
       return {
         ...state,
         temperaments: filteresTemp,
@@ -105,9 +109,13 @@ const rootReducer = (state = intialState, action) => {
         dogs: sortedWeight,
       };
     case "SHOW_DOG_DETAILS":
+      let myDetails = action.payload
+      if (!myDetails[0].temperaments[0]) { //agregamos "no-temperaments" a arreglos sin elementos dentro
+        myDetails[0].temperaments[0] = "no-temperaments"
+      }
       return {
         ...state,
-        details: action.payload
+        details: myDetails
       };
     default:
       return state;
