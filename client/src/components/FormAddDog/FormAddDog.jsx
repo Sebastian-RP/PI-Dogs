@@ -103,7 +103,9 @@ export default function FormAddDog() {
     return(
         <div className={style.main_wrapper}>
             <div className={style.container}>
-                <Link to="/home">{`<= Home`}</Link>
+                <Link to="/home">
+                    <button className={style.button_to_home}>Go home</button>
+                </Link>
                 <form action="" id="form" onSubmit={handleSubmit} className={`${style.form}`}>
                     <div className={style.name_container}>
                         <input className={style.input_name} type="text" value={form.name} name="name" onChange={(e) => handleChange(e)} placeholder="Name..."/>
