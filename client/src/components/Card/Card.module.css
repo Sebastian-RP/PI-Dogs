@@ -9,6 +9,7 @@ a{
     max-height: 50vh;
     overflow: hidden;
     color: #575025;
+    position: relative;
 }
 
 .image_container{

@@ -26,6 +26,8 @@ function Home() {
   const firstIndex = lastIndex - dogsPerPage;
   const currentDogs = allDogs.slice(firstIndex, lastIndex);//elementos a renderizar en la pagina, segun el valor de paginado
 
+  console.log(currentDogs);
+
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
   };
@@ -116,11 +118,11 @@ function Home() {
           return(
             <div className={`${style.container_card}`} key={el.id}>
               <Link to={"/dog-detail/"+el.id}>
-              {
-                <Card key={el.id} image={el.image} name={el.name} temperaments={el.temperaments[0].name ? el.temperaments.map(el => el.name) : el.temperaments}/>
-                //si temperaments viene en un formato distinto desde la BD
-              }
-            </Link>
+                {
+                  <Card key={el.id} image={el.image} name={el.name} temperaments={el.temperaments[0].name ? el.temperaments.map(el => el.name) : el.temperaments}/>
+                  //si temperaments viene en un formato distinto desde la BD
+                }
+              </Link>
             </div>      
           )
         })}

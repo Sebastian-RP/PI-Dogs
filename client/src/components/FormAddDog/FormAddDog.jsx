@@ -74,7 +74,7 @@ export default function FormAddDog() {
             temperaments: []
         });
     }
-
+    
     const handleChange = (e) => {
         setForm({
             ...form,
