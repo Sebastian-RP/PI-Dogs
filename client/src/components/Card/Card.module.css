@@ -12,6 +12,26 @@ a{
     position: relative;
 }
 
+.main_container:hover{
+ /* cursor: pointer; */
+}
+
+.main_container::before{
+    content: "";
+    position: absolute;
+}
+
+.main_container:hover::before{
+    content: "Details";
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 2.2rem;
+    left: 0%;
+    background-color: rgba(153, 153, 153, 0.5);
+}
+
 .image_container{
     height: 29vh;
     border-radius: 7px;
