@@ -3,7 +3,7 @@ const urlMyApi = "http://localhost:3001";
 
 export function getAllDogs() {
     return async function (dispatch) {
-        var json = await axios.get(`${urlMyApi}/dogs`, {
+        var json = await axios.get(`/dogs`, { //axios.get(`${urlMyApi}/dogs`
         });
         return dispatch({//necesario para despachar la accion
             type: "GET_ALL_DOGS",
@@ -14,7 +14,7 @@ export function getAllDogs() {
 
 export function getTemperaments() {
   return async function (dispatch) {
-      var json = await axios.get(`${urlMyApi}/temperament`);
+      var json = await axios.get(`/temperament`); //axios.get(`${urlMyApi}/temperament`)
       return dispatch({
           type: "GET_TEMPERAMENTS",
           payload: json.data,
@@ -32,7 +32,7 @@ export function FilterByTemperament(payload) {
 export function getBreed(payload) {//dogs by name
     return async function (dispatch) {//Dispatch que podemos usar gracias a la asincronia provista por el middleware thunk
         try {
-            var json = await axios.get(`${urlMyApi}/dogs?name=${payload}`)
+            var json = await axios.get(`/dogs?name=${payload}`) //axios.get(`${urlMyApi}/dogs?name=${payload}`)
             return dispatch ({
                 type: "GET_BREED",
                 payload: json.data
@@ -60,7 +60,7 @@ export function OrderByWeight(payload) {
 export function showDogDetails(id) {
     return async function (dispatch) {
         try {
-            var json = await axios.get("http://localhost:3001/dogs/"+id, {
+            var json = await axios.get("/dogs/"+id, { //axios.get("http://localhost:3001/dogs/"+id
         });
         return dispatch({
             type: "SHOW_DOG_DETAILS",
@@ -74,9 +74,7 @@ export function showDogDetails(id) {
 
 export function postDog(payload) {
     return async function () {
-        const data = await axios.post("http://localhost:3001/dog", payload);
-
-        console.log(data);
+        const data = await axios.post("/dog", payload); //axios.post("http://localhost:3001/dog"
         return data;
     }
 }
