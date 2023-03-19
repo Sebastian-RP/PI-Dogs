@@ -169,11 +169,4 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 - [ ] __POST /dog__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de raza de perro por body
   - Crea una raza de perro en la base de datos
-
-#### Testing
-- [ ] Al menos tener un componente del frontend con sus tests respectivos
-- [ ] Al menos tener una ruta del backend con sus tests respectivos
-- [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
-#   P I - D o g s 
- 
- 
+  
